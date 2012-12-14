@@ -1,0 +1,284 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE7695D9167B155D00510557 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7695D8167B155D00510557 /* UIKit.framework */; };
+		CE7695DB167B155D00510557 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7695DA167B155D00510557 /* Foundation.framework */; };
+		CE7695DD167B155D00510557 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7695DC167B155D00510557 /* CoreGraphics.framework */; };
+		CE7695DF167B155D00510557 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7695DE167B155D00510557 /* CoreData.framework */; };
+		CE7695E5167B155D00510557 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7695E3167B155D00510557 /* InfoPlist.strings */; };
+		CE7695E7167B155D00510557 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7695E6167B155D00510557 /* main.m */; };
+		CE7695EB167B155D00510557 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7695EA167B155D00510557 /* AppDelegate.m */; };
+		CE7695EE167B155E00510557 /* KaiChangBai.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE7695EC167B155E00510557 /* KaiChangBai.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CE7695D4167B155D00510557 /* KaiChangBai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaiChangBai.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7695D8167B155D00510557 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CE7695DA167B155D00510557 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CE7695DC167B155D00510557 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CE7695DE167B155D00510557 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CE7695E2167B155D00510557 /* KaiChangBai-Info.plist */ = {isa = PBXFileReference; path = "KaiChangBai-Info.plist"; sourceTree = "<group>"; };
+		CE7695E4167B155D00510557 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CE7695E6167B155D00510557 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CE7695E8167B155D00510557 /* KaiChangBai-Prefix.pch */ = {isa = PBXFileReference; path = "KaiChangBai-Prefix.pch"; sourceTree = "<group>"; };
+		CE7695E9167B155D00510557 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		CE7695EA167B155D00510557 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CE7695ED167B155E00510557 /* KaiChangBai.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KaiChangBai.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE7695D1167B155D00510557 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE7695D9167B155D00510557 /* UIKit.framework in Frameworks */,
+				CE7695DB167B155D00510557 /* Foundation.framework in Frameworks */,
+				CE7695DD167B155D00510557 /* CoreGraphics.framework in Frameworks */,
+				CE7695DF167B155D00510557 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE7695C9167B155D00510557 = {
+			isa = PBXGroup;
+			children = (
+				CE7695E0167B155D00510557 /* KaiChangBai */,
+				CE7695D7167B155D00510557 /* Frameworks */,
+				CE7695D5167B155D00510557 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE7695D5167B155D00510557 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE7695D4167B155D00510557 /* KaiChangBai.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE7695D7167B155D00510557 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE7695D8167B155D00510557 /* UIKit.framework */,
+				CE7695DA167B155D00510557 /* Foundation.framework */,
+				CE7695DC167B155D00510557 /* CoreGraphics.framework */,
+				CE7695DE167B155D00510557 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE7695E0167B155D00510557 /* KaiChangBai */ = {
+			isa = PBXGroup;
+			children = (
+				CE7695E9167B155D00510557 /* AppDelegate.h */,
+				CE7695EA167B155D00510557 /* AppDelegate.m */,
+				CE7695EC167B155E00510557 /* KaiChangBai.xcdatamodeld */,
+				CE7695E1167B155D00510557 /* Supporting Files */,
+			);
+			path = KaiChangBai;
+			sourceTree = "<group>";
+		};
+		CE7695E1167B155D00510557 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE7695E2167B155D00510557 /* KaiChangBai-Info.plist */,
+				CE7695E3167B155D00510557 /* InfoPlist.strings */,
+				CE7695E6167B155D00510557 /* main.m */,
+				CE7695E8167B155D00510557 /* KaiChangBai-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE7695D3167B155D00510557 /* KaiChangBai */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE7695F1167B155E00510557 /* Build configuration list for PBXNativeTarget "KaiChangBai" */;
+			buildPhases = (
+				CE7695D0167B155D00510557 /* Sources */,
+				CE7695D1167B155D00510557 /* Frameworks */,
+				CE7695D2167B155D00510557 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KaiChangBai;
+			productName = KaiChangBai;
+			productReference = CE7695D4167B155D00510557 /* KaiChangBai.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE7695CB167B155D00510557 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = CE7695CE167B155D00510557 /* Build configuration list for PBXProject "KaiChangBai" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CE7695C9167B155D00510557;
+			productRefGroup = CE7695D5167B155D00510557 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE7695D3167B155D00510557 /* KaiChangBai */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE7695D2167B155D00510557 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE7695E5167B155D00510557 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE7695D0167B155D00510557 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE7695E7167B155D00510557 /* main.m in Sources */,
+				CE7695EB167B155D00510557 /* AppDelegate.m in Sources */,
+				CE7695EE167B155E00510557 /* KaiChangBai.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CE7695E3167B155D00510557 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE7695E4167B155D00510557 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE7695EF167B155E00510557 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CE7695F0167B155E00510557 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE7695F2167B155E00510557 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KaiChangBai/KaiChangBai-Prefix.pch";
+				INFOPLIST_FILE = "KaiChangBai/KaiChangBai-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CE7695F3167B155E00510557 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KaiChangBai/KaiChangBai-Prefix.pch";
+				INFOPLIST_FILE = "KaiChangBai/KaiChangBai-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE7695CE167B155D00510557 /* Build configuration list for PBXProject "KaiChangBai" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE7695EF167B155E00510557 /* Debug */,
+				CE7695F0167B155E00510557 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE7695F1167B155E00510557 /* Build configuration list for PBXNativeTarget "KaiChangBai" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE7695F2167B155E00510557 /* Debug */,
+				CE7695F3167B155E00510557 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CE7695EC167B155E00510557 /* KaiChangBai.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CE7695ED167B155E00510557 /* KaiChangBai.xcdatamodel */,
+			);
+			currentVersion = CE7695ED167B155E00510557 /* KaiChangBai.xcdatamodel */;
+			path = KaiChangBai.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CE7695CB167B155D00510557 /* Project object */;
+}
