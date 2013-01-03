@@ -7,6 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NSObject+HttpCallback.h"
+
+//vendor
+#import "ASIHTTPRequest.h"
+#import "SVProgressHUD.h"
+#import "JSONKit.h"
+#import "MobClick.h"
+//network
+#import "HttpHandle.h"
 
 @interface BaseViewController : UIViewController
 {

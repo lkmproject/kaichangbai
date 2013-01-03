@@ -7,17 +7,14 @@
 //
 
 #import "IndexViewController.h"
+
 //vendor
-#import "ASIHTTPRequest.h"
-#import "SVProgressHUD.h"
-#import "JSONKit.h"
+#import "SVPullToRefresh.h"
 
 //db
 #import "CategoryDao.h"
-#import "TopicDao.h"
 
 //model
-#import "Topic.h"
 #import "Category.h"
 
 //controller
@@ -37,6 +34,11 @@
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [http cancelAllHttpRequest];
+}
 
 - (void)viewDidLoad
 {
@@ -46,38 +48,17 @@
     [self.view addSubview:self.myTableView];
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
-
-    NSURL *url = [NSURL URLWithString:@"http://test.easy17.com:4002/mobiles.json"];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request startSynchronous];
-    NSError *error = [request error];
-    if (!error)
-    {
-        NSString *response = [request responseString];
-        NSArray *arrObjs = [[response objectFromJSONString] objectForKey:@"result"];
-        @autoreleasepool
-        {
-            for (NSDictionary*dic in arrObjs)
-            {
-                Category *obj = [[Category alloc] init:dic];
-                [[CategoryDao sharedInstance] insertOrUpdateWithObj:obj];
-                
-                NSArray *topics = [dic objectForKey:@"topics"];
-                
-                for (NSDictionary *topic in topics)
-                {
-                    Topic *topObj = [[Topic alloc] init:topic];
-                    [[TopicDao sharedInstance] insertOrUpdateWithObj:topObj];
-                }
-                
-            }// end for loop
-        }// end autoreleasepool
-        
-        arrDataList = [[[CategoryDao sharedInstance] getAllResult] mutableCopy];
-    }
     
-    NSLog(@"%i",[[CategoryDao sharedInstance] getLatestDate]);
-
+    http = [[HttpHandle alloc] init];
+    http.delegate = self;
+    __weak HttpHandle *tempHttp = http;
+    
+    [self.myTableView addPullToRefreshWithActionHandler:^{
+        [tempHttp cancelAllHttpRequest];
+        [tempHttp downloadData];
+    }];
+    
+    [self.myTableView.pullToRefreshView triggerRefresh];
 }
 
 - (void)viewDidUnload
@@ -86,6 +67,17 @@
 
 }
 
+- (void)httpRequestFinish
+{
+    [self.myTableView.pullToRefreshView stopAnimating];
+    arrDataList = [[[CategoryDao sharedInstance] getAllResult] mutableCopy];
+    [self.myTableView reloadData];
+}
+
+- (void)httpRequestFail
+{
+    
+}
 
 #pragma mark - Table view data source
 
@@ -138,6 +130,11 @@
     Category *category = (Category*)[arrDataList objectAtIndex:indexPath.row];
 
     DetailsViewController *detail = [[DetailsViewController alloc] initWithCategoryID:category.strCategoryId Title:category.strName];
+    
+    //友盟数据统计
+    NSDictionary *dicCategory = [NSDictionary dictionaryWithObjectsAndKeys:category.strCategoryId,@"id",category.strName,@"category", nil];
+    [MobClick event:@"kaichangbai_category" attributes:dicCategory];
+    
     [self.navigationController pushViewController:detail animated:YES];
 }
 

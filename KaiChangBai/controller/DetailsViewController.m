@@ -9,7 +9,7 @@
 #import "DetailsViewController.h"
 
 //vendor
-#import "JSONKit.h"
+#import "UIImageView+WebCache.h"
 
 //db
 #import "TopicDao.h"
@@ -49,9 +49,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0]];
     
-    //添加UIScrollView
-    self.myScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, gViewWidth, gViewHeight)];
+    
+    //添加UIScrollView    
+    self.myScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, gViewWidth, gViewHeight-20)];
     self.myScrollview.delegate = self;
     self.myScrollview.pagingEnabled = YES;
     self.myScrollview.showsVerticalScrollIndicator = NO;
@@ -60,10 +62,11 @@
     
     arrDataList = [[[TopicDao sharedInstance] getAllResult:strCategoryID] mutableCopy];
     
+      
+    //初始化内容
     int width = self.myScrollview.frame.size.width;
     int height = self.myScrollview.frame.size.height;
-    [myScrollview setContentSize:CGSizeMake((width*arrDataList.count), height)];
-    
+
     for (int i = 0 ; i < arrDataList.count; i++)
     {
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(i*width, 0, width, height)];
@@ -115,37 +118,31 @@
             {
                 
                 labContent.textColor = [UIColor colorWithRed:255/255.0 green:0/255.0 blue:102/255.0 alpha:1.0];
-                /*
-                UIImage* bgImage = [[UIImage imageNamed:@"bg_msgbox_right"] stretchableImageWithLeftCapWidth:15  topCapHeight:15];
+                
+                UIImage* bgImage = [[UIImage imageNamed:@"bg_msgbox_right"] stretchableImageWithLeftCapWidth:20  topCapHeight:15];
                 [labContent setDynamicHeight:CGPointMake(padding/2-15, 10) width:width-padding];
                 UIImageView *labelBackground = [[UIImageView alloc] initWithFrame:CGRectMake(320 - [labContent getLabelWidth] - padding, y, [labContent getLabelWidth]+padding/2, [labContent getLabelHeight]+padding/2)];
                 [labelBackground setImage:bgImage];
                 [labelBackground addSubview:labContent];
                 [scrollView addSubview:labelBackground];
                 y = y + labelBackground.frame.size.height +10;
-                 */
+                 
           
             }else
             {
                  labContent.textColor = [UIColor colorWithRed:0/255.0 green:144/255.0 blue:255/255.0 alpha:1.0];
-                /*
+                
                  [labContent setDynamicHeight:CGPointMake(15, 10) width:width-padding];
-                 UIImage* bgImage = [[UIImage imageNamed:@"bg_msgbox_02"] stretchableImageWithLeftCapWidth:15  topCapHeight:15];
+                 UIImage* bgImage = [[UIImage imageNamed:@"bg_msgbox_02"] stretchableImageWithLeftCapWidth:20  topCapHeight:15];
                  UIImageView *labelBackground = [[UIImageView alloc] initWithFrame:CGRectMake(10, y, [labContent getLabelWidth]+padding/2, [labContent getLabelHeight]+padding/2)];
                  [labelBackground setImage:bgImage];
                  [labelBackground addSubview:labContent];
                  [scrollView addSubview:labelBackground];
                  y = y + labelBackground.frame.size.height +10;
-                 */
+                 
 
             }
-            [labContent setDynamicHeight:CGPointMake(15, 10) width:width-padding];
-            UIImage* bgImage = [[UIImage imageNamed:@"bg_msgbox_02"] stretchableImageWithLeftCapWidth:15  topCapHeight:15];
-            UIImageView *labelBackground = [[UIImageView alloc] initWithFrame:CGRectMake(10, y, [labContent getLabelWidth]+padding/2, [labContent getLabelHeight]+padding/2)];
-            [labelBackground setImage:bgImage];
-            [labelBackground addSubview:labContent];
-            [scrollView addSubview:labelBackground];
-            y = y + labelBackground.frame.size.height +10;
+        
             
         }
         
@@ -180,6 +177,59 @@
 
         
     }//完结scrollview for loop
+    
+    //加入广告
+    //读取广告资料
+    NSUserDefaults *userData = [NSUserDefaults
+                                standardUserDefaults];
+    NSData *data = [userData objectForKey:k_key_advertising];
+    if (userData != nil)
+    {
+        dicAdvertising = [NSKeyedUnarchiver
+                          unarchiveObjectWithData:data];
+        
+    }
+
+    int count = arrDataList.count;
+    if (dicAdvertising)
+    {
+        UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 526)];
+        NSURL *url =[NSURL URLWithString:[dicAdvertising objectForKey:@"image"]];
+        [image setImageWithURL:url];
+        
+        UIButton *buttonPhone = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [buttonPhone addTarget:self
+                   action:@selector(actPhoneCall)
+         forControlEvents:UIControlEventTouchDown];
+        [buttonPhone setBackgroundImage:[UIImage imageNamed:@"btnPhone"] forState:UIControlStateNormal];
+        buttonPhone.frame = CGRectMake(80, height-44 , 161.0, 42.0);
+        
+        
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(count*width, 0, width, height)];
+        scrollView.contentSize = CGSizeMake(width, image.frame.size.height);
+        [scrollView addSubview:image];
+        
+        [scrollView addSubview:buttonPhone];
+        
+        [self.myScrollview addSubview:scrollView];
+        count++;
+
+    }
+    [myScrollview setContentSize:CGSizeMake((width*count), height)];
+    
+    //添加UIPageControl
+    // Init Page Control
+    
+    UIView *viewBG = [[UIView alloc] initWithFrame:CGRectMake(0, self.myScrollview.frame.size.height, gViewWidth, 20)];
+    viewBG.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:viewBG];
+    
+    pageControl = [[UIPageControl alloc] init];
+    pageControl.frame = CGRectMake(0, 3, viewBG.frame.size.width, viewBG.frame.size.height);
+    pageControl.numberOfPages = count;
+    pageControl.currentPage = 0;
+    [viewBG addSubview:pageControl];
+
 }
 
 
@@ -187,6 +237,26 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UIScrollView delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView==self.myScrollview)
+    {
+        pageControl.currentPage = scrollView.contentOffset.x / scrollView.frame.size.width;
+
+    }
+}
+
+#pragma mark - local method
+
+- (void)actPhoneCall
+{
+    NSString *strPhoneNumber = [NSString stringWithFormat:@"tel:%@",[dicAdvertising objectForKey:@"phone"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:strPhoneNumber]];
+
 }
 
 @end

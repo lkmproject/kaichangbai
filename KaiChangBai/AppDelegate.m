@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "IndexViewController.h"
-
+#import "MobClick.h"
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -24,6 +24,8 @@
     UINavigationController *navIndex = [[UINavigationController alloc] initWithRootViewController:indexViewController];
     self.window.rootViewController = navIndex;
     
+   // [MobClick startWithAppkey:@"50e54bb55270151a14000020" reportPolicy:REALTIME channelId:nil];
+    [MobClick startWithAppkey:@"50e54bb55270151a14000020"];
     
     return YES;
 }

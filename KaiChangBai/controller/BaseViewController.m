@@ -7,7 +7,6 @@
 //
 
 #import "BaseViewController.h"
-
 @interface BaseViewController ()
 
 @end
@@ -60,5 +59,6 @@
     
     return titleView;
 }
+
 
 @end

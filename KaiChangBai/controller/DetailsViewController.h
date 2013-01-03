@@ -13,6 +13,8 @@
     NSString *strCategoryID;
     NSString *strTitle;
     NSMutableArray *arrDataList;
+    NSDictionary *dicAdvertising;
+    UIPageControl* pageControl;
 }
 @property(nonatomic,strong) UIScrollView *myScrollview;
 

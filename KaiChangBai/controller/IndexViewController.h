@@ -11,6 +11,7 @@
 {
     NSMutableArray *arrDataList;
     UITableView *myTableView;
+    HttpHandle *http;
 }
 @property(nonatomic,strong)UITableView *myTableView;
 @end
