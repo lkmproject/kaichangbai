@@ -13,3 +13,5 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
 #endif
+
+#define UMENG_APPKEY @"50e54bb55270151a14000020"

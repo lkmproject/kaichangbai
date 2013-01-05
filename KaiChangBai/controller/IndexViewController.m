@@ -8,9 +8,6 @@
 
 #import "IndexViewController.h"
 
-//vendor
-#import "SVPullToRefresh.h"
-
 //db
 #import "CategoryDao.h"
 
@@ -19,6 +16,7 @@
 
 //controller
 #import "DetailsViewController.h"
+#import "SettingViewController.h"
 
 @interface IndexViewController ()
 
@@ -31,6 +29,15 @@
 {
     [super viewWillAppear:animated];
     self.navigationItem.titleView = [self setTitleView:@"请选择你所在的场景" iconPositionX:44];
+    
+    UIButton *btnSetting= [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnSetting addTarget:self
+                   action:@selector(actSetting)
+         forControlEvents:UIControlEventTouchDown];
+    [btnSetting setBackgroundImage:[UIImage imageNamed:@"settings.png"] forState:UIControlStateNormal];
+    btnSetting.frame = CGRectMake(0, 0, 28, 28);
+    UIBarButtonItem *barBtnSetting = [[UIBarButtonItem alloc] initWithCustomView:btnSetting];
+    self.navigationItem.rightBarButtonItem = barBtnSetting;
     
 }
 
@@ -100,6 +107,7 @@
     
     if (cell==nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         UIImageView *imageTimeline  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 21, 75)];
         [imageTimeline setImage:[UIImage imageNamed:@"timeLine.png"]];
         [cell addSubview:imageTimeline];
@@ -132,10 +140,22 @@
     DetailsViewController *detail = [[DetailsViewController alloc] initWithCategoryID:category.strCategoryId Title:category.strName];
     
     //友盟数据统计
-    NSDictionary *dicCategory = [NSDictionary dictionaryWithObjectsAndKeys:category.strCategoryId,@"id",category.strName,@"category", nil];
-    [MobClick event:@"kaichangbai_category" attributes:dicCategory];
-    
+    NSDictionary *dicCategory = [NSDictionary dictionaryWithObjectsAndKeys:category.strCategoryId,@"categoryId",category.strName,@"categoryName", nil];
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate MobClickId:@"kaichangbai_category" attributes:dicCategory];
+        
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+#pragma mark - Local Method
+- (void)actSetting
+{
+    SettingViewController *settingViewController = [[SettingViewController alloc] init];
+    [self.navigationController pushViewController:settingViewController animated:YES];
+    
+    
+    
+    //[UMFeedback showFeedback:self withAppkey:UMENG_APPKEY];
 }
 
 @end

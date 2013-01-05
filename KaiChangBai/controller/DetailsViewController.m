@@ -8,9 +8,6 @@
 
 #import "DetailsViewController.h"
 
-//vendor
-#import "UIImageView+WebCache.h"
-
 //db
 #import "TopicDao.h"
 
@@ -202,7 +199,7 @@
                    action:@selector(actPhoneCall)
          forControlEvents:UIControlEventTouchDown];
         [buttonPhone setBackgroundImage:[UIImage imageNamed:@"btnPhone"] forState:UIControlStateNormal];
-        buttonPhone.frame = CGRectMake(80, height-44 , 161.0, 42.0);
+        buttonPhone.frame = CGRectMake(105, height-44 , 115, 36.0);
         
         
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(count*width, 0, width, height)];
@@ -250,13 +247,37 @@
     }
 }
 
+#pragma mark - UIAlertView delegate
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    switch (buttonIndex)
+    {
+        case 1:
+        {
+            NSString *strPhoneNumber = [NSString stringWithFormat:@"tel:%@",[dicAdvertising objectForKey:@"phone"]];
+                        
+            //友盟数据统计
+            NSDictionary *dicPhone = [NSDictionary dictionaryWithObjectsAndKeys:strPhoneNumber, @"phoneNumber", nil];
+            [MobClick event:@"kaichangbai_advertising" attributes:dicPhone];
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:strPhoneNumber]];
+
+        }
+            break;
+        default:
+            break;
+    }
+    
+}
+
 #pragma mark - local method
 
 - (void)actPhoneCall
 {
-    NSString *strPhoneNumber = [NSString stringWithFormat:@"tel:%@",[dicAdvertising objectForKey:@"phone"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:strPhoneNumber]];
-
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"呼叫" message:[dicAdvertising objectForKey:@"phone"] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    
+      
 }
 
 @end

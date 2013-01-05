@@ -14,6 +14,14 @@
 #import "SVProgressHUD.h"
 #import "JSONKit.h"
 #import "MobClick.h"
+#import "SVPullToRefresh.h"
+#import "UMFeedback.h"
+#import "UIImageView+WebCache.h"
+#import "SVWebViewController.h"
+
+//controller
+#import "AppDelegate.h"
+
 //network
 #import "HttpHandle.h"
 

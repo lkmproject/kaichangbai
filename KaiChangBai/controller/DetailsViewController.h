@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-@interface DetailsViewController : BaseViewController<UIScrollViewDelegate>
+@interface DetailsViewController : BaseViewController<UIScrollViewDelegate,UIAlertViewDelegate>
 {
     UIScrollView *myScrollview;
     NSString *strCategoryID;

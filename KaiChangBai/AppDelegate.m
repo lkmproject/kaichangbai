@@ -16,6 +16,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -24,10 +27,15 @@
     UINavigationController *navIndex = [[UINavigationController alloc] initWithRootViewController:indexViewController];
     self.window.rootViewController = navIndex;
     
-   // [MobClick startWithAppkey:@"50e54bb55270151a14000020" reportPolicy:REALTIME channelId:nil];
-    [MobClick startWithAppkey:@"50e54bb55270151a14000020"];
+    [MobClick startWithAppkey:UMENG_APPKEY];
+    [MobClick checkUpdate];
     
     return YES;
+}
+
+- (void)MobClickId:(NSString*)_id attributes:(NSDictionary*)dic
+{
+    [MobClick event:_id attributes:dic];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

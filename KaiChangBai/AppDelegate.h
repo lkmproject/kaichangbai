@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+- (void)MobClickId:(NSString*)_id attributes:(NSDictionary*)dic;
+
 @end
