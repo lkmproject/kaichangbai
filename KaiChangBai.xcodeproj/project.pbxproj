@@ -63,7 +63,6 @@
 		7A9BCC0C168A3BDD0035D2AD /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9BCC0A168A3BDD0035D2AD /* DetailsViewController.m */; };
 		7A9F92F21697AB7D0082F845 /* libUMFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9F92EE1697AB7D0082F845 /* libUMFeedback.a */; };
 		7A9F92F31697AB7D0082F845 /* umFeedback.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A9F92EF1697AB7D0082F845 /* umFeedback.bundle */; };
-		7A9F92F41697AB7D0082F845 /* 开发指南.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A9F92F11697AB7D0082F845 /* 开发指南.html */; };
 		7AEB935D169299CC0099C8BF /* BodyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB935C169299CC0099C8BF /* BodyModel.m */; };
 		7AEB935F1692A1150099C8BF /* recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AEB935E1692A1150099C8BF /* recommend.png */; };
 		7AEB93611692ACB90099C8BF /* rightPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AEB93601692ACB90099C8BF /* rightPoint.png */; };
@@ -195,7 +194,6 @@
 		7A9F92EE1697AB7D0082F845 /* libUMFeedback.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMFeedback.a; sourceTree = "<group>"; };
 		7A9F92EF1697AB7D0082F845 /* umFeedback.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = umFeedback.bundle; sourceTree = "<group>"; };
 		7A9F92F01697AB7D0082F845 /* UMFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedback.h; sourceTree = "<group>"; };
-		7A9F92F11697AB7D0082F845 /* 开发指南.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "开发指南.html"; sourceTree = "<group>"; };
 		7AEB935B169299CC0099C8BF /* BodyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyModel.h; sourceTree = "<group>"; };
 		7AEB935C169299CC0099C8BF /* BodyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyModel.m; sourceTree = "<group>"; };
 		7AEB935E1692A1150099C8BF /* recommend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recommend.png; sourceTree = "<group>"; };
@@ -425,44 +423,11 @@
 		7A9F92E91697AB7D0082F845 /* UMFeedback_iOS_1.3 */ = {
 			isa = PBXGroup;
 			children = (
-				7A9F92EA1697AB7D0082F845 /* .idea */,
 				7A9F92EE1697AB7D0082F845 /* libUMFeedback.a */,
 				7A9F92EF1697AB7D0082F845 /* umFeedback.bundle */,
 				7A9F92F01697AB7D0082F845 /* UMFeedback.h */,
-				7A9F92F11697AB7D0082F845 /* 开发指南.html */,
 			);
 			path = UMFeedback_iOS_1.3;
-			sourceTree = "<group>";
-		};
-		7A9F92EA1697AB7D0082F845 /* .idea */ = {
-			isa = PBXGroup;
-			children = (
-				7A9F92EB1697AB7D0082F845 /* dictionaries */,
-				7A9F92EC1697AB7D0082F845 /* inspectionProfiles */,
-				7A9F92ED1697AB7D0082F845 /* scopes */,
-			);
-			path = .idea;
-			sourceTree = "<group>";
-		};
-		7A9F92EB1697AB7D0082F845 /* dictionaries */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = dictionaries;
-			sourceTree = "<group>";
-		};
-		7A9F92EC1697AB7D0082F845 /* inspectionProfiles */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = inspectionProfiles;
-			sourceTree = "<group>";
-		};
-		7A9F92ED1697AB7D0082F845 /* scopes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = scopes;
 			sourceTree = "<group>";
 		};
 		CE7695C9167B155D00510557 = {
@@ -739,7 +704,6 @@
 				7A420AC4169774270019AD44 /* btnSettingNormal@2x.png in Resources */,
 				7A420AD016977BE10019AD44 /* SVWebViewController.bundle in Resources */,
 				7A9F92F31697AB7D0082F845 /* umFeedback.bundle in Resources */,
-				7A9F92F41697AB7D0082F845 /* 开发指南.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
