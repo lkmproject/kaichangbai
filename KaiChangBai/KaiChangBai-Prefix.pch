@@ -14,4 +14,4 @@
     #import <CoreData/CoreData.h>
 #endif
 
-#define UMENG_APPKEY @"50e54bb55270151a14000020"
+#define UMENG_APPKEY @"50ff83ea52701513ac00001d"
