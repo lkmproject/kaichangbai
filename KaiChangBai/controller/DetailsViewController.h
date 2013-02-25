@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-@interface DetailsViewController : BaseViewController<UIScrollViewDelegate,UIAlertViewDelegate>
+
+
+@interface DetailsViewController : BaseViewController<UIScrollViewDelegate>
 {
     UIScrollView *myScrollview;
     NSString *strCategoryID;
@@ -15,6 +17,8 @@
     NSMutableArray *arrDataList;
     NSDictionary *dicAdvertising;
     UIPageControl* pageControl;
+        
+    
 }
 @property(nonatomic,strong) UIScrollView *myScrollview;
 
