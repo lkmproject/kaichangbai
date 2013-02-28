@@ -20,6 +20,8 @@
 
 //View
 #import "DetailContentView.h"
+#import "DetailViewAdvertising.h"
+#import "DetailInstructionView.h"
 
 @interface DetailsViewController ()
 
@@ -57,9 +59,8 @@
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0]];
-   
+
     arrDataList = [[[TopicDao sharedInstance] getAllResult:strCategoryID] mutableCopy];
-    
     
     //添加UIScrollView    
     self.myScrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, gViewWidth, gViewHeight)];
@@ -79,53 +80,35 @@
         
         Topic *topic = (Topic*)[arrDataList objectAtIndex:i];
         
-        DetailContentView *detailsContent = [[DetailContentView alloc] initWithFrame:CGRectMake(i*320, 0, 320, gViewHeight) viewController:self topic:topic];
+        DetailContentView *detailsContent = [[DetailContentView alloc] initWithFrame:CGRectMake(i*width, 0, width, height) viewController:self topic:topic];
 
         [self.myScrollview addSubview:detailsContent];
         
         
     }//完结scrollview for loop
     
-    //加入广告
-    //读取广告资料
-    NSUserDefaults *userData = [NSUserDefaults
-                                standardUserDefaults];
-    NSData *data = [userData objectForKey:k_key_advertising];
-    if (userData != nil)
-    {
-        dicAdvertising = [NSKeyedUnarchiver
-                          unarchiveObjectWithData:data];
-        
-    }
-
+    DetailViewAdvertising *detailViewAdvertising = [[DetailViewAdvertising alloc] initWithFrame:CGRectMake(0, 0, width, height) andViewController:self.navigationController];
     int count = arrDataList.count;
-    if (dicAdvertising)
+    if (detailViewAdvertising)
     {
-        UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 526)];
-        NSURL *url =[NSURL URLWithString:[dicAdvertising objectForKey:@"image"]];
-        [image setImageWithURL:url];
-        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(count*width, 0, width, height)];
-        scrollView.contentSize = CGSizeMake(width, image.frame.size.height);
-        [scrollView addSubview:image];
-        [self.myScrollview addSubview:scrollView];
+        [detailViewAdvertising setFrame:CGRectMake(count*width, 0, width, height)];
+        [self.myScrollview addSubview:detailViewAdvertising];
         count++;
-        
+
     }
     [myScrollview setContentSize:CGSizeMake((width*count), height)];
     
     
-    //添加UIPageControl
-    // Init Page Control
     
-    UIView *viewBG = [[UIView alloc] initWithFrame:CGRectMake(0, gViewHeight-20, gViewWidth, 20)];
-    viewBG.backgroundColor = [UIColor clearColor];
-  //  [self.view addSubview:viewBG];
+    //加入操作指示
+    NSUserDefaults *instructionUserDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL bInstruction = [instructionUserDefaults boolForKey:@"detailInstruction"];
+    if (!bInstruction) {
+        DetailInstructionView *detailInstructionView = [[DetailInstructionView alloc] initWithFrame:CGRectMake(0, 0, gViewWidth, gViewHeight) andUIScrollView:self.myScrollview];
+        [self.view addSubview:detailInstructionView];
+        [instructionUserDefaults setBool:YES forKey:@"detailInstruction"];
+    }
     
-    pageControl = [[UIPageControl alloc] init];
-    pageControl.frame = CGRectMake(0, 3, viewBG.frame.size.width, viewBG.frame.size.height);
-    pageControl.numberOfPages = count;
-    pageControl.currentPage = 0;
-    [viewBG addSubview:pageControl];
 }
 
 
@@ -141,7 +124,8 @@
 {
     if (scrollView==self.myScrollview)
     {
-        pageControl.currentPage = scrollView.contentOffset.x / scrollView.frame.size.width;
+       // int currentPage = scrollView.contentOffset.x / scrollView.frame.size.width;
+        
 
     }
 }

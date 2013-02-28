@@ -18,6 +18,7 @@
 #import "UMFeedback.h"
 #import "UIImageView+WebCache.h"
 #import "SVWebViewController.h"
+#import "SVModalWebViewController.h"
 
 //controller
 #import "AppDelegate.h"

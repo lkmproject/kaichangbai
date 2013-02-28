@@ -10,6 +10,7 @@
 @interface IndexViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray *arrDataList;
+    NSArray *arrIndexAdvertising;
     UITableView *myTableView;
     HttpHandle *http;
 }

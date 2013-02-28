@@ -65,6 +65,11 @@
     request.username = k_key_advertising;
     [networkQueue addOperation:request];
     
+    strUrl = @"http://www.easy17.com:4002/mobiles/index_ad.json";
+    request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:strUrl]];
+    request.username = k_key_indexAdvertising;
+    [networkQueue addOperation:request];
+    
     [networkQueue go];
     
 }
@@ -115,6 +120,24 @@
             NSDictionary *dicResult = [dic objectForKey:@"result"];
             
             [advertising setObject:[NSKeyedArchiver archivedDataWithRootObject:dicResult] forKey:k_key_advertising];
+            
+            [advertising synchronize];
+        }//END DIC IF
+    }//END K_KEY_DATA IF
+    
+    
+    
+    if ([request.username isEqualToString:k_key_indexAdvertising])
+    {
+        NSString *response = [request responseString];
+        NSDictionary* dic = [response objectFromJSONString];
+        if ([dic objectForKey:@"success"])
+        {
+            NSUserDefaults *advertising = [NSUserDefaults
+                                           standardUserDefaults];
+            NSArray *arrResult = [dic objectForKey:@"result"];
+            
+            [advertising setObject:[NSKeyedArchiver archivedDataWithRootObject:arrResult] forKey:k_key_indexAdvertising];
             
             [advertising synchronize];
         }//END DIC IF

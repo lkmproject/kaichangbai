@@ -87,7 +87,9 @@
         {
             NSURL *URL = [NSURL URLWithString:@"http://weibo.com/kaichangbai1111"];
             SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:URL];
+            webViewController.barsTintColor = [UIColor blackColor];
             [self.navigationController pushViewController:webViewController animated:YES];
+             
         }
             break;
         case 102:

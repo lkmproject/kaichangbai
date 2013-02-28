@@ -28,7 +28,9 @@
         
         width_ = self.frame.size.width;
         height_ = self.frame.size.height;
-        /*
+        
+   
+        
         //添加友盟社会化评论
         [UMSocialData setAppKey:UMENG_APPKEY];
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:topicObject.strTopicId];
@@ -36,9 +38,9 @@
         socialBar.center = CGPointMake(160, height_ - socialBar.frame.size.height/2);
         socialData.shareText = @"开场白寻找真爱：";
         [self addSubview:socialBar];
-*/
+
         // 加入scrollview ，它用来显示内容
-        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, self.frame.size.height)];
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, self.frame.size.height - socialBar.frame.size.height)];
         [self addSubview:scrollView];
         
         int y = 10;
@@ -139,10 +141,20 @@
         
         y = y + [labRecommendContent getLabelHeight]+10;
         [scrollView setContentSize:CGSizeMake(320, y)];
-            
+        
 
     } 
     return self;
+}
+
+#pragma mark - UIScrollView delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+        // int currentPage = scrollView.contentOffset.x / scrollView.frame.size.width;
+        
+        
 }
 
 /*

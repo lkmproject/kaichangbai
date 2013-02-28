@@ -14,6 +14,10 @@
 //model
 #import "Category.h"
 
+
+//view
+#import "TopicScrollView.h"
+
 //controller
 #import "DetailsViewController.h"
 #import "SettingViewController.h"
@@ -65,6 +69,7 @@
         [tempHttp downloadData];
     }];
     
+    
     [self.myTableView.pullToRefreshView triggerRefresh];
 }
 
@@ -78,6 +83,20 @@
 {
     [self.myTableView.pullToRefreshView stopAnimating];
     arrDataList = [[[CategoryDao sharedInstance] getAllResult] mutableCopy];
+    
+    //读取广告资料
+    NSUserDefaults *userData = [NSUserDefaults
+                                standardUserDefaults];
+    NSData *data = [userData objectForKey:k_key_indexAdvertising];
+    if (userData != nil)
+    {
+      NSArray *arrAdvertising = [NSKeyedUnarchiver
+                          unarchiveObjectWithData:data];
+      
+      arrIndexAdvertising = [arrAdvertising copy];
+        
+    }
+    
     [self.myTableView reloadData];
 }
 
@@ -102,31 +121,60 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell==nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        UIImageView *imageTimeline  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 21, 75)];
-        [imageTimeline setImage:[UIImage imageNamed:@"timeLine.png"]];
-        [cell addSubview:imageTimeline];
+
+    static NSString *CellIdentifier1 = @"Cellidentifier1";
+    static NSString *CellIdentifier2 = @"Cellidentifier2";
+
+ 
+    if (indexPath.row==0)
+    {
         
-        UIImageView *imageArrow  = [[UIImageView alloc] initWithFrame:CGRectMake(290, 30, 16, 20)];
-        [imageArrow setImage:[UIImage imageNamed:@"arrow.png"]];
-        [cell addSubview:imageArrow];
+        UITableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
         
+        if (cell1==nil)
+        {
+            cell1 = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier1];
+            cell1.selectionStyle = UITableViewCellSelectionStyleNone;
+
+            TopicScrollView *topicScrollView = [[TopicScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 150)
+                                                                             imageArr:arrIndexAdvertising
+                                                                       navViewController:self.navigationController];
+            [cell1 addSubview:topicScrollView];
+        }
+        
+        return cell1;
+
+    }else
+    {
+        UITableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
+        
+        if (cell2==nil)
+        {
+            cell2 = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier2];
+            cell2.selectionStyle = UITableViewCellSelectionStyleNone;
+            UIImageView *imageTimeline  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 21, 75)];
+            [imageTimeline setImage:[UIImage imageNamed:@"timeLine.png"]];
+            [cell2 addSubview:imageTimeline];
+            
+            UIImageView *imageArrow  = [[UIImageView alloc] initWithFrame:CGRectMake(290, 30, 16, 20)];
+            [imageArrow setImage:[UIImage imageNamed:@"arrow.png"]];
+            [cell2 addSubview:imageArrow];
+
+        }
+        Category *obj = [arrDataList objectAtIndex:indexPath.row];
+        cell2.textLabel.text = [NSString stringWithFormat:@"    %@",obj.strName];
+        return cell2;
     }
     
-    Category *obj = [arrDataList objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"    %@",obj.strName];
-    
-    return cell;
+    return nil;
 }
+    
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row==0) {
+        return 150;
+    }
     return 75;
 }
 
@@ -153,9 +201,6 @@
     SettingViewController *settingViewController = [[SettingViewController alloc] init];
     [self.navigationController pushViewController:settingViewController animated:YES];
     
-    
-    
-    //[UMFeedback showFeedback:self withAppkey:UMENG_APPKEY];
 }
 
 @end

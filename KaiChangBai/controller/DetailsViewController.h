@@ -15,8 +15,6 @@
     NSString *strCategoryID;
     NSString *strTitle;
     NSMutableArray *arrDataList;
-    NSDictionary *dicAdvertising;
-    UIPageControl* pageControl;
         
     
 }

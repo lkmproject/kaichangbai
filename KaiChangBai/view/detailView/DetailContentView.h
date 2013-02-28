@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class Topic;
-@interface DetailContentView : UIView
+@interface DetailContentView : UIView 
 {
     UIScrollView *scrollView_;
     int width_;

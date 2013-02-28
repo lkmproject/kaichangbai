@@ -15,7 +15,7 @@
 
 static SDImageCache *instance;
 
-static NSInteger cacheMaxCacheAge = 60*60*24*7; // 1 week
+static NSInteger cacheMaxCacheAge = 60*60; // 1 hour
 
 @implementation SDImageCache
 
