@@ -8,6 +8,7 @@
 
 #import "TopicScrollView.h"
 #import "UIImageView+WebCache.h"
+#import "AppDelegate.h"
 
 //model
 #import "IndexAdvertising.h"
@@ -72,8 +73,15 @@
 - (void)actButtonClick:(id)sender
 {
     IndexAdvertising *object = [[IndexAdvertising alloc] init:[arrPhotoInfo objectAtIndex:[sender tag]]];
+    
+    
+    //友盟数据统计
+    NSDictionary *dicCategory = [NSDictionary dictionaryWithObjectsAndKeys:object.strId,@"AdvertisingId",object.strLink,@"AdvertisingURL", nil];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate MobClickId:@"kaichangbai_advertising" attributes:dicCategory];
+    
     NSURL *URL = [NSURL URLWithString:object.strLink];
-
     SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:URL];
     webViewController.barsTintColor = [UIColor blackColor];
     [navController_ pushViewController:webViewController animated:YES];

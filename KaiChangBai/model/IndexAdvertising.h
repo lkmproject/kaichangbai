@@ -12,10 +12,12 @@
 {
     NSString *strPhotoPath;
     NSString *strLink;
+    NSString *strId;
 }
 
 @property(nonatomic,strong)NSString *strPhotoPath;
 @property(nonatomic,strong)NSString *strLink;
+@property(nonatomic,strong)NSString *strId;
 
 - (id)init:(NSDictionary*)dic;
 

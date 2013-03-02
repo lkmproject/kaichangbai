@@ -38,7 +38,7 @@
     labVersion.backgroundColor = [UIColor clearColor];
     labVersion.textAlignment = UITextAlignmentCenter;
     labVersion.textColor = [UIColor colorWithRed:154/255.0 green:150/255.0 blue:138/255.0 alpha:1];
-    labVersion.text = @"版本 1.0 Build 2012-01-05";
+    labVersion.text = @"版本 1.1 Build 2012-03-01";
     [self.view addSubview:labVersion];
     
     UIButton *btnFeedback = [self addButtonToViewWithName:@"反馈" tag:100];

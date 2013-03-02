@@ -9,7 +9,7 @@
 #import "IndexAdvertising.h"
 
 @implementation IndexAdvertising
-@synthesize strLink,strPhotoPath;
+@synthesize strLink,strPhotoPath,strId;
 - (id)init:(NSDictionary*)dic
 {
     self = [super init];
@@ -17,6 +17,7 @@
     {
         self.strLink = [dic objectForKey:@"url"];
         self.strPhotoPath = [dic objectForKey:@"image"];
+        self.strId = [dic objectForKey:@"id"];
         
     }
     return self;
